@@ -1,17 +1,19 @@
-function attendanceCounter() {
-  const data = {};
+function attendanceCounter(classname) {
+  const obj = {};
 
-  return function (className, totalPresent = null) {
-    if (!data[className]) data[className] = 0;
-    data[className] += totalPresent;
+  return function (total) {
+    if (!obj[classname]) obj[classname] = 0;
+    obj[classname] += total;
 
-    return `In ${className} total present student is ${data[className]}`;
+    return `Total ${obj[classname]} students in ${classname}.`;
   };
-};
+}
 
-const obj = attendanceCounter();
+const MERN = attendanceCounter("MERN");
+const DSA = attendanceCounter("DSA");
+const JAVA = attendanceCounter("JAVA");
 
-console.log(obj("MERN", 50));
-console.log(obj("MERN", 50));
-console.log(obj("Java", 40));
-console.log(obj("DSA", 58));
+console.log(MERN(80));
+console.log(DSA(40));
+console.log(JAVA(50));
+console.log(JAVA(50));

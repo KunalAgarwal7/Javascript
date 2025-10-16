@@ -8,9 +8,7 @@ function studentDatafetcher(id) {
     { name: "Ajay", marks: 50 },
   ];
 
-  return arr[id];
+  return arr;
 }
 
-console.log(studentDatafetcher(5));
-console.log(studentDatafetcher(1));
-console.log(studentDatafetcher(2));
+console.log(studentDatafetcher());

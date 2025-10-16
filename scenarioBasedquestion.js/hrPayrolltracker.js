@@ -10,10 +10,12 @@ function bonusTracker(bonus) {
 
     return `${employeeName} bonus is: ${data[employeeName]}`;
   };
-};
+}
 
-const ans = bonusTracker();
+const Kunal = bonusTracker();
+const Rajat = bonusTracker();
 
-console.log(ans("Kunal", 1000));
-console.log(ans("Kunal", 1000));
-console.log(ans("Kunal", 1000));
+console.log(Kunal("Kunal", 1000));
+console.log(Kunal("Kunal", 1000));
+console.log(Rajat("Rajat", 1000));
+console.log(Rajat("Rajat", 4000));

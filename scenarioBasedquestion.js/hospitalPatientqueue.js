@@ -1,18 +1,15 @@
 function doctorData() {
-  const data = {};
+  let data = [];
 
-  return function patientName(doctorName, patientName = null) {
-    if (!data[doctorName]) data[doctorName] = [];
-    if (patientName) data[doctorName].push(patientName);
-
-    return data[doctorName];
+  return function patientName(...patientName) {
+    data.push(...patientName);
+    console.log(data);
   };
-};
+}
 
-const doctor = doctorData();
+const Drkabita = doctorData();
+const DrKuldeep = doctorData();
 
-console.log(doctor("Dr.Kunal", "Nabeela"));
-console.log(doctor("Dr.Mathura", "Manas"));
-console.log(doctor("Dr.Rajesh", "Sheetal"));
+Drkabita("Kunal", "Nabeela", "Prajjal");
+DrKuldeep("Priya", "Raman", "Nikhil");
 
-console.log(doctor("Dr.Kunal", "Himanshu"));

@@ -1,0 +1,21 @@
+{
+  "name": "javascript",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "This repository contains my JavaScript projects, experiments, and practice code.  \r It is a collection of scripts, utilities, and examples that demonstrate different concepts of JavaScript programming.",
+  "main": "scenarioBasedquestion.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KunalAgarwal7/Javascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KunalAgarwal7/Javascript/issues"
+  },
+  "homepage": "https://github.com/KunalAgarwal7/Javascript#readme"
+}

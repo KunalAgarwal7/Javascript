@@ -111,3 +111,90 @@ let twenty = ans.map((obj) => ({
   netLikes: obj.reactions.likes - obj.reactions.dislikes,
 }));
 console.log(twenty);
+
+// Use .reduce() to compute the total number of views across all posts.
+let twentyOne = ans.reduce((acc, curr) => acc + curr.views, 0);
+console.log(twentyOne);
+
+// Use .reduce() to compute the total number of likes across all posts.
+let twentyTwo = ans.reduce((acc, curr) => acc + curr.reactions.likes, 0);
+console.log(twentyTwo);
+
+// Use .reduce() to compute an object mapping userId → number of posts authored by that user.
+let twentyThree = ans.reduce((acc, curr) => {
+  acc[curr["userId"]] = (acc[curr["userId"]] || 0) + 1;
+  return acc;
+}, {});
+console.log(twentyThree);
+
+// Use .reduce() to compute the average tagCount (number of tags) per post.
+const twentyFour = ans.reduce(
+  (acc, curr, _, arr) => acc + curr.tags.length / arr.length,
+  0
+);
+console.log(twentyFour);
+
+// Use .reduce() to create an object where keys are tags and values are number of posts having that tag (i.e., tag frequency).
+let twentyFive = ans.reduce((acc, curr) => {
+  curr.tags.forEach((tag) => (acc[tag] = (acc[tag] || 0) + 1));
+  return acc;
+}, {});
+console.log(twentyFive);
+
+// Use .reduce() to compute the post that has the maximum netLikes (from question 20). Return its full object.
+let twentySix = twenty.reduce(
+  (acc, curr) => (curr.netLikes > acc.netLikes ? curr : acc),
+  { netLikes: 0 }
+);
+console.log(twentySix);
+
+// Use .reduce() to build an object mapping userId → total views of posts by that user.
+let twentySeven = ans.reduce((acc, curr) => {
+  if (!acc[curr.userId]) acc[curr.userId] = 0;
+  acc[curr.userId] += curr.views;
+  return acc;
+}, {});
+console.log(twentySeven);
+
+// Use .reduce() to compute average views for posts that have at least one tag "life".
+let twentyEight = ans.reduce(
+  (acc, curr) => {
+    if (curr.tags.includes("life")) {
+      acc.sum += curr.views;
+      acc.count++;
+    }
+    return acc;
+  },
+  { sum: 0, count: 0 }
+);
+
+const average = twentyEight.sum / twentyEight.count;
+
+console.log(average);
+
+// Use .reduce() to compute the sum of dislikes for posts with less than 500 views.
+let twentyNine = ans.reduce((acc, curr) => {
+  if (curr.views < 500) acc += curr.reactions.dislikes;
+  return acc;
+}, 0);
+console.log(twentyNine);
+
+// Use .reduce() to build a nested object of shape { userId: { totalLikes, totalDislikes, totalPosts } }.
+let thirty = ans.reduce((acc, curr) => {
+  const uid = curr.userId;
+
+  if (!acc[uid]) {
+    acc[uid] = {
+      totalLikes: 0,
+      totalDislikes: 0,
+      totalPosts: 0,
+    };
+  }
+
+  acc[uid].totalLikes += curr.reactions.likes;
+  acc[uid].totalDislikes += curr.reactions.dislikes;
+  acc[uid].totalPosts++;
+
+  return acc;
+}, {});
+console.log(thirty);

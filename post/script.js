@@ -42,3 +42,72 @@ console.log(nine);
 // Use .find() to locate a post whose views field is less than the number of likes in reactions.
 let ten = ans.find((obj) => obj.views < obj.reactions?.likes);
 console.log(ten);
+
+// Use .map() to convert each post into an object containing { postId, author: userId, title }.
+let eleven = ans.map((obj) => ({
+  postId: obj.id,
+  author: obj.userId,
+  title: obj.title,
+}));
+console.log(eleven);
+
+// Use .map() to create an array of strings in the format "<title> (by user <userId>)".
+let tweleve = ans.map(
+  (obj) => `${obj.title} is written by user : ${obj.userId}`
+);
+console.log(tweleve);
+
+// Use .map() to add a new property engagement to each post object, computed as likes + dislikes + views.
+let thirteen = ans.map((obj) => ({
+  ...obj,
+  ["likes + dislikes + views"]:
+    obj.reactions.likes + obj.views + obj.reactions.dislikes,
+}));
+console.log(thirteen);
+
+// Use .map() to generate an array where each item is { id, tagCount } where tagCount is the number of tags.
+let fourteen = ans.map((obj) => ({ id: obj.id, tagCount: obj.tags.length }));
+console.log(fourteen);
+
+// Use .map() to produce an array of posts with only id, title, and shortBody (which is first 50 characters of body + "...").
+let fifteen = ans.map((obj) => ({
+  id: obj.id,
+  title: obj.title,
+  shortBody: obj.body.slice(0, 51) + "...",
+}));
+console.log(fifteen);
+
+// Use .map() to produce an array of posts with id, title, and popularity which is views / (likes + 1).
+let sixteen = ans.map((obj) => ({
+  id: obj.id,
+  title: obj.title,
+  popularity: obj.views / (obj.reactions.likes + 1),
+}));
+console.log(sixteen);
+
+// Use .map() to convert each post’s tags to uppercase strings (so tags: ['crime','history'] becomes ['CRIME','HISTORY']).
+let seventeen = ans.map((obj) => obj.tags.map((value) => value.toUpperCase()));
+console.log(seventeen);
+
+// Use .map() to create a new array of objects where each contains { id, title, isHighTraffic }, where isHighTraffic is true if views > 1000.
+let eighteen = ans.map((obj) => ({
+  id: obj.id,
+  title: obj.title,
+  isHighTraffic: obj.views > 1000,
+}));
+console.log(eighteen);
+
+// Use .map() to produce objects with { id, author: userId, tagSummary } where tagSummary is a string of tags joined by ", ".
+let nineteen = ans.map((obj) => ({
+  id: obj.id,
+  author: obj.userId,
+  tagSummary: obj.tags.join(", "),
+}));
+console.log(nineteen);
+
+// Use .map() to add a property netLikes = likes – dislikes for each post.
+let twenty = ans.map((obj) => ({
+  ...obj,
+  netLikes: obj.reactions.likes - obj.reactions.dislikes,
+}));
+console.log(twenty);
